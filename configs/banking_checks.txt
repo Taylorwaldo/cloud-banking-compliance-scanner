@@ -1,0 +1,33 @@
+# Critical Banking Security Checks
+# PCI-DSS Related
+iam_password_policy_number
+iam_password_policy_lowercase
+iam_password_policy_uppercase
+iam_root_mfa_enabled
+iam_user_mfa_enabled_console_access
+
+# Data Protection
+s3_bucket_default_encryption
+s3_bucket_public_access_block
+rds_instance_storage_encrypted
+ebs_volume_encryption_enabled
+
+# Audit & Compliance
+cloudtrail_multi_region_enabled
+cloudtrail_log_file_validation_enabled
+config_recorder_all_regions_enabled
+
+# Network Security
+vpc_flow_logs_enabled
+securitygroup_not_allow_ingress_from_internet_to_port_22
+securitygroup_not_allow_ingress_from_internet_to_port_3389
+
+# Access Management
+iam_no_root_access_key
+iam_access_keys_rotated_90_days
+iam_policy_least_privilege
+
+# Incident Response
+guardduty_enabled
+securityhub_enabled
+cloudwatch_log_group_retention_policy

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Compliance Dashboard - FFIEC Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #718096;
+            font-size: 1.2em;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-card.critical {
+            border-left: 5px solid #f56565;
+        }
+        
+        .metric-card.warning {
+            border-left: 5px solid #ed8936;
+        }
+        
+        .metric-card.info {
+            border-left: 5px solid #4299e1;
+        }
+        
+        .metric-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .score-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        
+        .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4em;
+            font-weight: bold;
+            color: #f56565;
+        }
+        
+        .grade {
+            font-size: 2em;
+            color: #f56565;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .grade-description {
+            color: #718096;
+        }
+        
+        .services-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .service-row:last-child {
+            border-bottom: none;
+        }
+        
+        .service-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        
+        .severity-badges {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .badge.critical {
+            background: #f56565;
+        }
+        
+        .badge.high {
+            background: #ed8936;
+        }
+        
+        .badge.medium {
+            background: #f6ad55;
+        }
+        
+        .badge.low {
+            background: #48bb78;
+        }
+        
+        .recommendations {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .recommendation {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+        
+        .recommendation.critical {
+            background: #fff5f5;
+            border-color: #f56565;
+        }
+        
+        .recommendation.high {
+            background: #fffdf7;
+            border-color: #ed8936;
+        }
+        
+        .recommendation h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .recommendation ul {
+            margin-left: 20px;
+            color: #4a5568;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .critical-alert {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏦 Banking Compliance Dashboard</h1>
+            <div class="subtitle">FFIEC Framework Compliance Assessment</div>
+        </div>
+        
+        <div class="score-card">
+            <div class="score-circle">
+                <svg width="200" height="200">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#e2e8f0" stroke-width="20"/>
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#f56565" stroke-width="20"
+                            stroke-dasharray="565.48" stroke-dashoffset="565.48"
+                            transform="rotate(-90 100 100)"/>
+                </svg>
+                <div class="score-value">0%</div>
+            </div>
+            <div class="grade critical-alert">F</div>
+            <div class="grade-description">Critical - Immediate Action Required</div>
+        </div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card critical">
+                <div class="metric-value">29</div>
+                <div class="metric-label">Failed Checks</div>
+            </div>
+            <div class="metric-card critical">
+                <div class="metric-value">2</div>
+                <div class="metric-label">Critical Issues</div>
+            </div>
+            <div class="metric-card warning">
+                <div class="metric-value">17</div>
+                <div class="metric-label">High Priority</div>
+            </div>
+            <div class="metric-card info">
+                <div class="metric-value">9</div>
+                <div class="metric-label">Medium Priority</div>
+            </div>
+        </div>
+        
+        <div class="services-section">
+            <h2 style="margin-bottom: 20px; color: #2d3748;">Service Breakdown</h2>
+            
+            <div class="service-row">
+                <div class="service-name">CloudTrail</div>
+                <div class="severity-badges">
+                    <span class="badge high">17 HIGH</span>
+                </div>
+            </div>
+            
+            <div class="service-row">
+                <div class="service-name">IAM</div>
+                <div class="severity-badges">
+                    <span class="badge critical">2 CRITICAL</span>
+                    <span class="badge medium">5 MEDIUM</span>
+                    <span class="badge low">1 LOW</span>
+                </div>
+            </div>
+            
+            <div class="service-row">
+                <div class="service-name">CloudWatch</div>
+                <div class="severity-badges">
+                    <span class="badge medium">4 MEDIUM</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recommendations">
+            <h2 style="margin-bottom: 20px; color: #2d3748;">Priority Recommendations</h2>
+            
+            <div class="recommendation critical">
+                <h3>🔴 CRITICAL - Fix within 24 hours</h3>
+                <ul>
+                    <li>Enable MFA for root account immediately</li>
+                    <li>Review and restrict IAM policies</li>
+                    <li>Document all changes in compliance tracker</li>
+                    <li>Schedule emergency security review with CISO</li>
+                </ul>
+            </div>
+            
+            <div class="recommendation high">
+                <h3>🟡 HIGH - Fix within 1 week</h3>
+                <ul>
+                    <li>Enable CloudTrail in all regions</li>
+                    <li>Configure log file validation</li>
+                    <li>Set up centralized logging to S3</li>
+                    <li>Enable CloudTrail insights</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Generated by Cloud Banking Compliance Scanner</p>
+            <p>Scan Date: September 30, 2025 at 04:39 PM</p>
+        </div>
+    </div>
+</body>
+</html>

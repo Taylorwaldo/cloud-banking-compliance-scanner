@@ -1,0 +1,30 @@
+# AWS credentials
+.aws/
+*.pem
+credentials
+
+# Reports with sensitive data
+reports/*.html
+reports/*.json
+reports/*.csv
+reports/*.ocsf.json
+reports/compliance/
+
+# Keep only executive summaries
+!reports/executive_summary*.md
+!reports/compliance_dashboard.html
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# Prowler outputs
+output/
+temp/
+scan_output.txt
+
+# IDE
+.vscode/
+.idea/

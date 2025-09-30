@@ -1,0 +1,38 @@
+name: Banking Compliance Scan
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  compliance-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Install Prowler
+      run: |
+        pip install prowler
+        prowler --version
+    
+    - name: Run Banking Compliance Scan
+      run: |
+        chmod +x scripts/banking_compliance_scanner.sh
+        ./scripts/banking_compliance_scanner.sh pci-dss
+    
+    - name: Upload Reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: compliance-reports
+        path: reports/
