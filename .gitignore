@@ -28,3 +28,7 @@ scan_output.txt
 # IDE
 .vscode/
 .idea/
+
+# Include specific successful scan results
+!reports/executive_summary_20251002*.md
+!reports/before_after_comparison.html
