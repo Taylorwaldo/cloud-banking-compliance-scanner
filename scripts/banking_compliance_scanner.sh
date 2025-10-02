@@ -40,10 +40,10 @@ fi
 # Function: Display banner
 show_banner() {
     echo -e "${GREEN}"
-    echo "╔════════════════════════════════════════╗"
-    echo "║   Cloud Banking Compliance Scanner    ║"
-    echo "║         Powered by Prowler            ║"
-    echo "╔════════════════════════════════════════╗"
+    echo "╔════════════════════════════════════════════╗"
+    echo "║   Cloud Banking Compliance Scanner         ║"
+    echo "║        Powered by Prowler                  ║"
+    echo "╚════════════════════════════════════════════╝"
     echo -e "${NC}"
 }
 
