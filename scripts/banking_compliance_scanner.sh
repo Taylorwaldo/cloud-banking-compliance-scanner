@@ -87,32 +87,28 @@ run_compliance_scan() {
                 --compliance pci_3.2.1_aws \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "$output_name" \
-                --status FAIL
+                --output-filename "$output_name" 
             ;;
         "sox")
             $PROWLER_CMD aws \
                 --compliance soc2_aws \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "$output_name" \
-                --status FAIL
+                --output-filename "$output_name" 
             ;;
         "cis")
             $PROWLER_CMD aws \
                 --compliance cis_2.0_aws \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "$output_name" \
-                --status FAIL
+                --output-filename "$output_name" 
             ;;
         "ffiec")
             $PROWLER_CMD aws \
                 --compliance ffiec_aws \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "$output_name" \
-                --status FAIL
+                --output-filename "$output_name" 
             ;;
         "quick-test")
             # Quick test with just a few checks
@@ -121,8 +117,7 @@ run_compliance_scan() {
                 --check iam_root_mfa_enabled iam_password_policy_uppercase s3_bucket_public_access_block \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "quick_test_${TIMESTAMP}" \
-                --status FAIL
+                --output-filename "quick_test_${TIMESTAMP}" 
             ;;
         "all-banking")
             # Run multiple compliance frameworks relevant to banking
@@ -134,8 +129,7 @@ run_compliance_scan() {
                 --compliance pci_3.2.1_aws \
                 --output-formats json-ocsf \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "banking_pci_${TIMESTAMP}" \
-                --status FAIL
+                --output-filename "banking_pci_${TIMESTAMP}" 
             
             # SOC2
             echo -e "${YELLOW}Running SOC2 checks...${NC}"
@@ -143,8 +137,7 @@ run_compliance_scan() {
                 --compliance soc2_aws \
                 --output-formats json-ocsf \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "banking_soc2_${TIMESTAMP}" \
-                --status FAIL
+                --output-filename "banking_soc2_${TIMESTAMP}" 
             
             # FFIEC
             echo -e "${YELLOW}Running FFIEC checks...${NC}"
@@ -152,8 +145,7 @@ run_compliance_scan() {
                 --compliance ffiec_aws \
                 --output-formats json-ocsf html \
                 --output-directory "$REPORTS_DIR" \
-                --output-filename "banking_comprehensive_${TIMESTAMP}" \
-                --status FAIL
+                --output-filename "banking_comprehensive_${TIMESTAMP}" 
             ;;
         *)
             echo -e "${RED}[!] Unknown framework: $framework${NC}"
