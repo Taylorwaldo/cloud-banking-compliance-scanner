@@ -9,7 +9,7 @@ html = """
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: white;
             padding: 40px;
         }
         .container {
