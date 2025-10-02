@@ -145,4 +145,5 @@ MIT License - See LICENSE for details.
 Taylor Waldo
 
 LinkedIn: [linkedin.com/in/taylorwaldo](https://www.linkedin.com/in/taylor-j-waldo/)
+
 GitHub: @Taylorwaldo
