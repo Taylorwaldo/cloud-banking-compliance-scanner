@@ -1,4 +1,4 @@
-# Cloud Banking Compliance Scanner
+# Cloud Banking Compliance Scanner (WORK IN PROGRESS)
 
 ## Overview
 Automated AWS compliance scanner tailored for banking industry requirements, leveraging Prowler to validate against PCI-DSS, SOX, and FFIEC frameworks.
