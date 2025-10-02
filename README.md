@@ -1,4 +1,4 @@
-# Cloud Banking Compliance Scanner 
+# Cloud Banking Compliance Scanner Project
 
 ## About
 An automated AWS compliance scanner tailored for banking industry requirements (PCI-DSS, SOX, FFIEC), built to identify and remediate security gaps in cloud infrastructure. This tool demonstrates the critical importance of continuous compliance monitoring in financial services.
