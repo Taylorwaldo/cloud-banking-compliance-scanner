@@ -147,3 +147,7 @@ Taylor Waldo
 LinkedIn: [linkedin.com/in/taylorwaldo](https://www.linkedin.com/in/taylor-j-waldo/)
 
 GitHub: @Taylorwaldo
+
+### Repo Update Highlight
+Successfully cleaned up history by removing a sensitive commit. Utter pain. 
+
