@@ -56,12 +56,13 @@ flowchart TB
         JSON["reports/<br/>executive_summary_TIMESTAMP.json"]
         MD["reports/<br/>executive_summary_TIMESTAMP.md"]
         DASH["reports/<br/>compliance_dashboard.html"]
-        COMPARE["reports/<br/>before_after_comparison.html"]
+        COMPARE["reports/<br/>before_after_comparison.html<br/>(Static - hardcoded values)"]
     end
     
     subgraph Automation["🤖 GitHub Actions"]
         TRIGGER["Triggers:<br/>- schedule: '0 2 * * 1'<br/>- push: main<br/>- workflow_dispatch"]
         WORKFLOW[".github/workflows/<br/>compliance-scan.yml"]
+        ARTIFACTS["GitHub Artifacts<br/>(Downloadable reports)"]
     end
     
     CMD1 --> PROWLER
@@ -70,17 +71,20 @@ flowchart TB
     PROWLER -->|Generates| OCSF
     PROWLER -->|Generates| HTML1
     
-    OCSF --> PARSER
+    OCSF -->|Reads| PARSER
     CMD2 --> PARSER
     PARSER -->|Writes| JSON
     PARSER -->|Writes| MD
     PARSER -->|Writes| DASH
     
-    CMD3 --> COMPARE
+    CMD3 -->|Creates| COMPARE
     
     TRIGGER -.->|Executes| WORKFLOW
     WORKFLOW -.->|Runs| PROWLER
-    WORKFLOW -.->|Uploads| FinalReports
+    JSON -.->|Uploads| ARTIFACTS
+    MD -.->|Uploads| ARTIFACTS
+    DASH -.->|Uploads| ARTIFACTS
+    HTML1 -.->|Uploads| ARTIFACTS
     
     style Manual fill:#fff3cd,stroke:#856404,stroke-width:3px,color:#000
     style AWS fill:#ff9999,stroke:#333,stroke-width:2px,color:#000
