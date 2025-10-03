@@ -28,14 +28,20 @@ aws configure
 
 ```mermaid
 flowchart LR
-    A[AWS Account] --> B[Prowler Scanner]
-    B --> C[Compliance Analysis]
-    C --> D[Executive Reports]
-
-    A -.->|Credentials| B
-    B -.->|OCSF JSON| C
-    C -.->|Python Processing| D
-    D -.->|HTML / MD / CSV| D
+    A[AWS Account] -->|Scans| B[Prowler Scanner]
+    B -->|Raw OCSF JSON| C[generate_summary.py]
+    C -->|Parsed Data| D[Executive Reports]
+    
+    D -->|Creates| E[HTML Dashboard]
+    D -->|Creates| F[Markdown Summary]
+    D -->|Creates| G[JSON Data]
+    
+    H[GitHub Actions] -.->|Weekly/Push| B
+    
+    style A fill:#ff9999
+    style B fill:#99ccff
+    style C fill:#99ff99
+    style D fill:#ffff99
 ```
 
 ## Core Components
