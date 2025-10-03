@@ -128,6 +128,7 @@ flowchart TB
 <img width="852" height="650" alt="comparison" src="https://github.com/user-attachments/assets/d35abb89-cc03-438f-a8b2-aada54832d32" />
 
 *Post-remediation: 61.29% compliance, 38 security controls passed*
+**Remediation steps:** [Remediation Playbook](../../wiki/Remediation-Playbook)
 
 ### Impact Metrics
 
@@ -138,9 +139,8 @@ flowchart TB
 | Critical Issues | 2 | 0 | -100% |
 | Scan Time | 5 min | 4 min | Consistent |
 
-**Note:** The before/after visualization uses a simplified grading scale (C = 60-79%). Production reports use stricter banking-grade thresholds where scores below 70% indicate critical failures. See [Grading and Scoring](../../wiki/Grading-and-Scoring) for details.
-
-**Remediation steps:** [Remediation Playbook](../../wiki/Remediation-Playbook)
+> [!NOTE]
+> The before/after visualization uses a simplified grading scale (C = 60-79%). Production reports use stricter banking-grade thresholds where scores below 70% indicate critical failures. See [Grading and Scoring](../../wiki/Grading-and-Scoring) for details.
 
 ---
 
