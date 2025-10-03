@@ -102,11 +102,11 @@ Prowler Integration
 **Activate AWS Config** - Continuous compliance monitoring
 
 ## Transformation Achieved
+
 <img width="1440" height="900" alt="Transformation_achieved" src="https://github.com/user-attachments/assets/a29c1cae-67f0-4d03-86a5-2d9f14306604" />
+
 *Post-remediation: 61.29% compliance, 38 security controls passed*
 
-### About the Visualization
-> **Note:** The before/after comparison uses a simplified grading scale for demonstration purposes to clearly illustrate security improvements. Production compliance reporting (via `generate_summary.py`) uses the stricter banking-grade scale where scores below 70% are classified as critical failures requiring immediate action.
 
 ## Impact Metrics
 
@@ -120,6 +120,10 @@ Prowler Integration
 ## Comparision (Before and after hardening)
 
 <img width="852" height="650" alt="comparison" src="https://github.com/user-attachments/assets/4d844056-f650-4884-93df-d85c2ad74181" />
+
+### About the Visualization Above
+> **Note:** The before/after comparison uses a simplified grading scale for demonstration purposes to clearly illustrate security improvements. Production compliance reporting (via `generate_summary.py`) uses the stricter banking-grade scale where scores below 70% are classified as critical failures requiring immediate action.
+
 
 ## Business Value
 
@@ -162,6 +166,4 @@ LinkedIn: [linkedin.com/in/taylorwaldo](https://www.linkedin.com/in/taylor-j-wal
 
 GitHub: @Taylorwaldo
 
-### Repo Update Highlight
-Successfully cleaned up history by removing a sensitive commit. Utter pain. 
-
+ 
