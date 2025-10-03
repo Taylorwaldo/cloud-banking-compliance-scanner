@@ -136,6 +136,9 @@ Prowler Integration
 ## Real-World Results
 **Initial Security Assessment**
 <img width="1050" height="939" alt="BEFORE_SCAN" src="https://github.com/user-attachments/assets/98eb9141-28fb-4ef7-a9cd-0513def9c9c5" />
+
+<img width="701" height="740" alt="Screenshot 2025-10-03 at 10 16 10 AM" src="https://github.com/user-attachments/assets/3cb5d06c-ada8-4b44-bdf7-1183804db575" />
+
 *Initial scan: 0% compliance, 29 security failures detected*
 
 ## Remediation Process
