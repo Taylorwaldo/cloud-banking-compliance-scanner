@@ -38,10 +38,14 @@ flowchart LR
     
     H[GitHub Actions] -.->|Weekly/Push| B
     
-    style A fill:#ff9999
-    style B fill:#99ccff
-    style C fill:#99ff99
-    style D fill:#ffff99
+    style A fill:#ff9999,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#99ccff,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#99ff99,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#ffff99,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#e6e6e6,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#e6e6e6,stroke:#333,stroke-width:2px,color:#000
+    style G fill:#e6e6e6,stroke:#333,stroke-width:2px,color:#000
+    style H fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ## Core Components
