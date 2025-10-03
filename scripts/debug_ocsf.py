@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Debug OCSF format to understand structure"""
+"""
+Debug OCSF format to understand structure
+Debugging tool for development
+Not part of the main workflow
+Users don't need this
+Will either remove it or move it to a dev-tools/ folder
+
+"""
 
 import json
 import sys
