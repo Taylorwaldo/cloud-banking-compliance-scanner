@@ -1,30 +1,46 @@
-# Cloud Banking Compliance Scanner Project
+# Cloud Banking Compliance Scanner
 
-## About
-An automated AWS compliance scanner tailored for banking industry requirements (PCI-DSS, SOX, FFIEC), built to identify and remediate security gaps in cloud infrastructure. This tool demonstrates the critical importance of continuous compliance monitoring in financial services.
+An automated AWS compliance scanner for banking industry requirements (PCI-DSS, SOX, FFIEC). Identifies and remediates security gaps in cloud infrastructure with continuous monitoring capabilities.
 
 ![ScreenRecording2025-10-02at4 37 30PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/08e892ef-85d1-4494-96a5-7c6b70a3fbe9)
 
 *Scanning AWS infrastructure against FFIEC banking compliance framework*
 
+---
+
 ## Quick Start
+
 ```bash
-# Clone the repository
 git clone https://github.com/Taylorwaldo/cloud-banking-compliance-scanner.git
 cd cloud-banking-compliance-scanner
-
-# Run setup
 ./setup.sh
-
-# Configure AWS credentials
 aws configure
-
-# Run compliance scan
 ./run_scanner.sh ffiec
 ```
-## Project Architecture
 
-### Workflow Overview
+**Full installation guide:** [Installation Guide](../../wiki/Installation-Guide)
+
+---
+
+## Project Overview
+
+### What It Does
+- Scans AWS accounts against banking compliance frameworks
+- Generates executive-ready reports in multiple formats
+- Automates weekly compliance monitoring via GitHub Actions
+- Tracks security improvements over time
+
+### Supported Frameworks
+- **FFIEC** - Federal Financial Institutions Examination Council
+- **PCI-DSS 3.2.1** - Payment Card Industry Data Security Standard
+- **SOX/SOC2** - Sarbanes-Oxley Act
+- **CIS 2.0** - Center for Internet Security Benchmarks
+
+**Details:** [Compliance Frameworks](../../wiki/Compliance-Frameworks)
+
+---
+
+## Architecture
 
 ```mermaid
 flowchart TB
@@ -95,83 +111,38 @@ flowchart TB
     style Automation fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
 ```
 
-## Core Components
+**Technical deep dive:** [Architecture](../../wiki/Architecture)
 
-**run_scanner.sh:** Entry point wrapper script
-
-**banking_compliance_scanner.sh:** Main orchestrator that coordinates Prowler and analysis
-
-**generate_summary.py:** Processes raw scan data into executive summaries
-
-**generate_before_after.py:** Creates transformation visualizations
-
-## Compliance Frameworks
-**This scanner evaluates AWS environments against:**
-
-**FFIEC** - Federal Financial Institutions Examination Council
-
-**PCI-DSS 3.2.1** - Payment Card Industry Data Security Standard
-
-**SOX** - Sarbanes-Oxley Act (SOC2)
-
-**CIS 2.0** - Center for Internet Security Benchmarks 
-
-## Technical Components
-Prowler Integration
-
-**Version:** 5.12.0
-
-**Role:** Core scanning engine executing 80+ security checks
-
-**Output:** OCSF JSON, HTML reports, CSV compliance matrices
-
-## AWS Test Environment
-
-**Account Type:** AWS Free Tier
-
-**Purpose:** Safe sandbox for compliance testing
-
-**Services Scanned:** IAM, S3, CloudTrail, Config, CloudWatch
+---
 
 ## Real-World Results
-**Initial Security Assessment**
-<img width="1050" height="939" alt="BEFORE_SCAN" src="https://github.com/user-attachments/assets/98eb9141-28fb-4ef7-a9cd-0513def9c9c5" />
 
-<img width="701" height="740" alt="Screenshot 2025-10-03 at 10 16 10 AM" src="https://github.com/user-attachments/assets/3cb5d06c-ada8-4b44-bdf7-1183804db575" />
+### Initial Security Assessment
 
-*Initial scan: 0% compliance, 29 security failures detected*
+<img width="701" height="740" alt="Screenshot 2025-10-03 at 10 16 10 AM" src="https://github.com/user-attachments/assets/f0c1ece8-3a3e-41fd-b042-b59257f64bb5" />
 
-## Remediation Process
-**The scanner identified critical gaps that were resolved through:**
+*Initial scan: 0% compliance, 29 security failures*
 
-**Enable CloudTrail** - Audit logging across all regions
+### Transformation Achieved
 
-**Configure Root MFA** - Critical access protection
-
-**Activate AWS Config** - Continuous compliance monitoring
-
-## Transformation Achieved
-
-<img width="1440" height="900" alt="Transformation_achieved" src="https://github.com/user-attachments/assets/a29c1cae-67f0-4d03-86a5-2d9f14306604" />
+<img width="852" height="650" alt="comparison" src="https://github.com/user-attachments/assets/d35abb89-cc03-438f-a8b2-aada54832d32" />
 
 *Post-remediation: 61.29% compliance, 38 security controls passed*
 
+### Impact Metrics
 
-## Impact Metrics
+| Metric | Before | After | Improvement |
+|--------|--------|-------|-------------|
+| Compliance Score | 0% | 61.29% | +61.29% |
+| Failed Checks | 29 | 24 | -17.24% |
+| Critical Issues | 2 | 0 | -100% |
+| Scan Time | 5 min | 4 min | Consistent |
 
-| **Metric**        | **Before** | **After** | **Improvement** |
-|--------------------|------------|-----------|-----------------|
-| Compliance Score   | 0%         | 61.29%    | +61.29%         |
-| Failed Checks      | 29         | 24        | -17.24%         |
-| Critical Issues    | 2          | 0         | -100%           |
-| Scan Time          | 5 min      | 4 min     | Consistent      |
+**Note:** The before/after visualization uses a simplified grading scale (C = 60-79%). Production reports use stricter banking-grade thresholds where scores below 70% indicate critical failures. See [Grading and Scoring](../../wiki/Grading-and-Scoring) for details.
 
-## Comparision (Before and after hardening)
+**Remediation steps:** [Remediation Playbook](../../wiki/Remediation-Playbook)
 
-<img width="852" height="650" alt="comparison" src="https://github.com/user-attachments/assets/4d844056-f650-4884-93df-d85c2ad74181" />
-
-> **Note on Grading:** The before/after visualization uses a simplified grading scale (C = 60-79%) for demonstration purposes. Production compliance reports generated by `generate_summary.py` apply stricter banking-grade thresholds where scores below 70% indicate critical failures requiring immediate remediation. See [Grading and Scoring](https://github.com/Taylorwaldo/cloud-banking-compliance-scanner/wiki/Grading-and-Scoring) for technical details.
-
+---
 
 ## Business Value
 
@@ -180,38 +151,65 @@ Prowler Integration
 - Real-time detection of configuration drift
 - Executive-ready compliance reporting
 
+---
+
+## Usage
+
+### Run a Scan
+```bash
+./run_scanner.sh ffiec          # Banking regulations
+./run_scanner.sh pci-dss        # Payment card security
+./run_scanner.sh quick-test     # Fast 3-check test
+```
+
+### View Reports
+```bash
+./scripts/view_report.sh list   # List all reports
+./scripts/view_report.sh open   # Open latest HTML
+```
+
+**API documentation:** [API Reference](../../wiki/API-Reference)
+
+---
+
 ## Output Formats
-**After each scan, the tool generates:**
 
-*.ocsf.json - Raw Prowler findings in OCSF format
+- `.ocsf.json` - Raw Prowler findings (OCSF format)
+- `.html` - Visual compliance dashboard
+- `executive_summary_*.md` - Executive-readable summary
+- `compliance/*.csv` - Detailed compliance matrix
 
-*.html - Visual compliance dashboard
-
-executive_summary_*.md - C-suite readable summary
-
-compliance/*.csv - Detailed compliance matrix
-
-## Installation
-See Setup Guide for detailed instructions.
+---
 
 ## Documentation
 
-Architecture Details
+- [Installation Guide](../../wiki/Installation-Guide) - Setup instructions
+- [Architecture](../../wiki/Architecture) - Technical implementation details
+- [Compliance Frameworks](../../wiki/Compliance-Frameworks) - Framework specifications
+- [Remediation Playbook](../../wiki/Remediation-Playbook) - Fix security issues (How I got from 0% to 61%)
+- [Grading and Scoring](../../wiki/Grading-and-Scoring) - How scores are calculated
+- [API Reference](../../wiki/API-Reference) - Script usage and parameters
 
-Compliance Frameworks
+---
 
-Remediation Playbook
+## Tech Stack
 
-API Reference
+- **Prowler 5.12.0** - AWS security scanner (80+ checks)
+- **Python 3** - Report generation and data processing
+- **Bash** - Orchestration and automation
+- **GitHub Actions** - CI/CD automation
+- **OCSF Format** - Standardized security event schema
+
+---
 
 ## License
-MIT License - See LICENSE for details.
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
 
 ## Author
-Taylor Waldo
 
-LinkedIn: [linkedin.com/in/taylorwaldo](https://www.linkedin.com/in/taylor-j-waldo/)
-
-GitHub: @Taylorwaldo
-
+**Taylor Waldo**  
+[LinkedIn](https://www.linkedin.com/in/taylor-j-waldo/) | [GitHub](https://github.com/Taylorwaldo)
  
