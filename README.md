@@ -28,7 +28,8 @@ aws configure
 
 ```mermaid
 flowchart LR
-    A[AWS Account] -->|Scans| B[Prowler Scanner]
+    A[AWS Account] -->|Provides Credentials| B[Prowler Scanner]
+    B -->|Scans| A
     B -->|Raw OCSF JSON| C[generate_summary.py]
     C -->|Parsed Data| D[Executive Reports]
     
@@ -36,7 +37,7 @@ flowchart LR
     D -->|Creates| F[Markdown Summary]
     D -->|Creates| G[JSON Data]
     
-    H[GitHub Actions] -.->|Weekly/Push| B
+    H[GitHub Actions] -.->|Triggers Weekly/Push| B
     
     style A fill:#ff9999,stroke:#333,stroke-width:2px,color:#000
     style B fill:#99ccff,stroke:#333,stroke-width:2px,color:#000
